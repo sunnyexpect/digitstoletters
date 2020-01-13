@@ -32,6 +32,7 @@ public class DigitsLetters {
         list.add(l8);
         list.add(l9);
         List<String> data = Arrays.asList(inputData.trim().split(""));
+        //Filter: only filter 2-9 are valid input
         Pattern pattern = Pattern.compile("[2-9]");
         if(data.size() > 0) {
             data.stream().filter(s -> (pattern.matcher(s).matches())).forEach(s -> {

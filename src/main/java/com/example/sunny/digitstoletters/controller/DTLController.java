@@ -17,6 +17,13 @@ public class DTLController {
     @Autowired
     private IDTLServiceImpl idtlServiceImpl;
 
+    /**
+     *
+     * Function entry
+     *
+     * @param inputData Both stage1, 2 inputs are valid
+     * @return
+     */
     @GetMapping("digits")
     public String digits(String inputData) {
         List<List<String>> result = new ArrayList<List<String>>();

@@ -19,7 +19,94 @@ class DTLServiceImplTest {
     private  IDTLServiceImpl dtlService;
 
     @Test
-    void digitsToLetters() {
+    void SingleDigitsToLetters() {
+        List<List<String>> result = new ArrayList<List<String>>();
+        ArrayList<String> curList = new ArrayList<>();
+        String input = "4";
+        DigitsLetters digitsLetters = new DigitsLetters(input);
+        dtlService.digitsToLetters(digitsLetters.getSource(), result, 0, curList);
+        assertEquals(digitsLetters.getCount(), result.stream().distinct().count());
+        boolean allMatch = result.stream().allMatch(l -> {
+            boolean flag = true;
+            for(int i = 1; i< l.size(); i++){
+                if(!digitsLetters.getSource().get(i).contains(l.get(i))){
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        });
+        assertEquals(true, allMatch);
+    }
+
+    @Test
+    void MultipleDigitsToLetters() {
+        List<List<String>> result = new ArrayList<List<String>>();
+        ArrayList<String> curList = new ArrayList<>();
+        Random random = new Random();
+        String input = "4,6";
+        DigitsLetters digitsLetters = new DigitsLetters(String.valueOf(input));
+        dtlService.digitsToLetters(digitsLetters.getSource(), result, 0, curList);
+        assertEquals(digitsLetters.getCount(), result.stream().distinct().count());
+        boolean allMatch = result.stream().allMatch(l -> {
+            boolean flag = true;
+            for(int i = 1; i< l.size(); i++){
+                if(!digitsLetters.getSource().get(i).contains(l.get(i))){
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        });
+        assertEquals(true, allMatch);
+    }
+
+    @Test
+    void BoundaryDigitsToLetters() {
+        List<List<String>> result = new ArrayList<List<String>>();
+        ArrayList<String> curList = new ArrayList<>();
+        Random random = new Random();
+        String input = "4,1,3,0";
+        DigitsLetters digitsLetters = new DigitsLetters(String.valueOf(input));
+        dtlService.digitsToLetters(digitsLetters.getSource(), result, 0, curList);
+        assertEquals(digitsLetters.getCount(), result.stream().distinct().count());
+        boolean allMatch = result.stream().allMatch(l -> {
+            boolean flag = true;
+            for(int i = 1; i< l.size(); i++){
+                if(!digitsLetters.getSource().get(i).contains(l.get(i))){
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        });
+        assertEquals(true, allMatch);
+    }
+
+    @Test
+    void Stage2InputDigitsToLetters() {
+        List<List<String>> result = new ArrayList<List<String>>();
+        ArrayList<String> curList = new ArrayList<>();
+        Random random = new Random();
+        String input = "4103";
+        DigitsLetters digitsLetters = new DigitsLetters(String.valueOf(input));
+        dtlService.digitsToLetters(digitsLetters.getSource(), result, 0, curList);
+        assertEquals(digitsLetters.getCount(), result.stream().distinct().count());
+        boolean allMatch = result.stream().allMatch(l -> {
+            boolean flag = true;
+            for(int i = 1; i< l.size(); i++){
+                if(!digitsLetters.getSource().get(i).contains(l.get(i))){
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        });
+        assertEquals(true, allMatch);
+    }
+
+    @Test
+    void RandomDigitsToLetters() {
         List<List<String>> result = new ArrayList<List<String>>();
         ArrayList<String> curList = new ArrayList<>();
         Random random = new Random();

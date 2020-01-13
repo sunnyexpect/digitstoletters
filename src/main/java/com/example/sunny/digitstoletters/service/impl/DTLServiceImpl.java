@@ -15,6 +15,13 @@ public class DTLServiceImpl implements IDTLServiceImpl {
 
     DigitsLetters digitsLetters;
 
+    /**
+     *
+     * Generate the source list and invoke the recursion method to calculate the result
+     *
+     * @param inputData
+     * @return
+     */
     @Override
     public List<List<String>> getLetters(String inputData) {
         ArrayList<List<String>> result = new ArrayList<>();
@@ -25,6 +32,15 @@ public class DTLServiceImpl implements IDTLServiceImpl {
         return this.digitsToLetters(digitsLetters.getSource(), result, 0, new ArrayList<String>());
     }
 
+    /**
+     * Use recursion method to generate the final result
+     *
+     * @param source    Input valid digits combining letters list
+     * @param result    Output result
+     * @param layer     Recursion layer
+     * @param curList   Recursion layer current result list
+     * @return
+     */
     @Override
     public List<List<String>> digitsToLetters(List<List<String>> source, List<List<String>> result, int layer, List<String> curList) {
         if(layer < source.size() - 1){
